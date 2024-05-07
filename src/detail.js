@@ -94,7 +94,8 @@ async function makesubpage() {
     </div>
     <div id="right_section" class="col">
         <h2 id ="mtitle"> ${details.title}</h2>
-        <p> 유트브 링크:${tmp} </p>
+        <p> <strong>유트브 링크</strong> :${tmp} </p>
+        <strong> 줄거리 </strong>
         <p> ${details.overview} </p>
         <strong> 영화 감독</strong>
         <p> ${credits[1][0].name}</p>
