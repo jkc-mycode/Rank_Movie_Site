@@ -1,34 +1,34 @@
 function addComment() {
-    var name = document.getElementById('name').value;
-    var password = document.getElementById('password').value;
-    var review = document.getElementById('review').value;
-    var movieId = document.getElementById('movieId').value;
+    let name = document.getElementById('name').value;
+    let password = document.getElementById('password').value;
+    let review = document.getElementById('review').value;
+    let movieId = document.getElementById('movieId').value;
 
     // 현재 날짜 및 시간 가져오기
-    var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date + ' ' + time;
+    let today = new Date();
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date + ' ' + time;
 
-    var commentId = generateUniqueId(); // 댓글 고유 아이디 생성
+    let commentId = generateUniqueId(); // 댓글 고유 아이디 생성
 
-    var newComment = document.createElement('div');
+    let newComment = document.createElement('div');
     newComment.innerHTML = '<strong>' + name + '</strong> - ' + review;
 
     // 댓글을 로컬 스토리지에 저장
-    var commentsKey = 'comments_' + movieId; // 각 페이지(영화)별로 다른 키 생성
-    var comments = JSON.parse(localStorage.getItem(commentsKey)) || [];
+    let commentsKey = 'comments_' + movieId; // 각 페이지(영화)별로 다른 키 생성
+    let comments = JSON.parse(localStorage.getItem(commentsKey)) || [];
     comments.push({ id: commentId, name: name, password: password, review: review, dateTime: dateTime, movieId: movieId });
     localStorage.setItem(commentsKey, JSON.stringify(comments));
 
-    var deleteButton = document.createElement('button');
+    let deleteButton = document.createElement('button');
     deleteButton.textContent = '삭제';
     deleteButton.addEventListener('click', function () {
-        var inputPassword = prompt('비밀번호를 입력하세요:');
+        let inputPassword = prompt('비밀번호를 입력하세요:');
         if (inputPassword === password) {
             newComment.remove();
 
-            var index = comments.findIndex(function(item) {
+            let index = comments.findIndex(function(item) {
                 return item.id === commentId;
             });
             comments.splice(index, 1);
@@ -39,7 +39,7 @@ function addComment() {
     });
     newComment.appendChild(deleteButton);
 
-    var commentContainer = document.getElementById('commentContainer');
+    let commentContainer = document.getElementById('commentContainer');
     commentContainer.appendChild(newComment);
 
     document.getElementById('name').value = '';
@@ -60,36 +60,36 @@ window.onload = loadComments;
 
 // 댓글 작성 함수
 function addComment() {
-    var name = document.getElementById('name').value;
-    var password = document.getElementById('password').value;
-    var review = document.getElementById('review').value;
-    var movieId = document.getElementById('movieId').value;
+    let name = document.getElementById('name').value;
+    let password = document.getElementById('password').value;
+    let review = document.getElementById('review').value;
+    let movieId = document.getElementById('movieId').value;
 
     // 현재 날짜 및 시간 가져오기
-    var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date + ' ' + time;
+    let today = new Date();
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date + ' ' + time;
 
-    var commentId = generateUniqueId(); // 댓글 고유 아이디 생성
+    let commentId = generateUniqueId(); // 댓글 고유 아이디 생성
 
-    var newComment = document.createElement('div');
+    let newComment = document.createElement('div');
     newComment.innerHTML = '<strong>' + name + '</strong> - ' + review;
 
     // 댓글을 로컬 스토리지에 저장
-    var commentsKey = 'comments_' + movieId; // 각 페이지(영화)별로 다른 키 생성
-    var comments = JSON.parse(localStorage.getItem(commentsKey)) || [];
+    let commentsKey = 'comments_' + movieId; // 각 페이지(영화)별로 다른 키 생성
+    let comments = JSON.parse(localStorage.getItem(commentsKey)) || [];
     comments.push({ id: commentId, name: name, password: password, review: review, dateTime: dateTime, movieId: movieId });
     localStorage.setItem(commentsKey, JSON.stringify(comments));
 
-    var deleteButton = document.createElement('button');
+    let deleteButton = document.createElement('button');
     deleteButton.textContent = '삭제';
     deleteButton.addEventListener('click', function () {
-        var inputPassword = prompt('비밀번호를 입력하세요:');
+        let inputPassword = prompt('비밀번호를 입력하세요:');
         if (inputPassword === password) {
             newComment.remove();
 
-            var index = comments.findIndex(function(item) {
+            let index = comments.findIndex(function(item) {
                 return item.id === commentId;
             });
             comments.splice(index, 1);
@@ -100,7 +100,7 @@ function addComment() {
     });
     newComment.appendChild(deleteButton);
 
-    var commentContainer = document.getElementById('commentContainer');
+    let commentContainer = document.getElementById('commentContainer');
     commentContainer.appendChild(newComment);
 
     document.getElementById('name').value = '';
@@ -123,6 +123,6 @@ function generateUniqueId() {
 
 // URL에서 영화 아이디 추출 함수
 function getMovieIdFromUrl() {
-    var urlParams = new URLSearchParams(window.location.search);
+    let urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('movieId');
 }
