@@ -1,5 +1,5 @@
 
-# 🖥️ 개발자되고파의 내배캠 인기영화 콜렉션 프로젝트
+# 🖥️ 개발자되고파 팀의 내배캠 인기영화 콜렉션
 ![메인페이지](./imgs/readme/image.png)
 
 ## 프로젝트 소개
@@ -187,23 +187,73 @@ const matchImageById = async function (id) {
 };
 ```
 
-
 <br>
 
 ### 5-4. 영화 상세 페이지 기능
-- 
+- 메인 화면에서 영화 카드 클릭 시 영화 상세페이지로 이동
+![상세페이지 화면]()
 
+- 상세페이지에서는 영화의 상세정보, 출연진 정보, 트레일러 영상 정보를 가져옴
+
+- 그래서 총 3개의 API를 사용함
+```javascript
+// 영화 감독 출연진 정보에 대한 api가져오기
+async function getcredit(id) {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=ko-KR`, options);
+    const data = await response.json();
+    console.log(data);
+
+    const newmoviecredit = [];
+    newmoviecredit.push(data.cast);
+    newmoviecredit.push(data.crew);
+
+    return newmoviecredit;
+}
+
+// 영화트레일러 api
+async function getvideo(id) {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=ko-KR`, options);
+    const data = await response.json();
+    console.log(data);
+    let newvideo;
+    newvideo = data.results;
+
+    return newvideo;
+}
+
+// 영화디테일 api
+async function getdetail(id) {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=ko-KR`, options);
+    const data = await response.json();
+    let newdetail;
+    newdetail = data;
+
+    return newdetail;
+}
+```
 
 <br>
 
 ### 5-5. 영화 리뷰 기능
-- 
+- 영화 리뷰 기능은 해당 영화 상세페이지에서 작성 가능
+
+- 작성자, 비밀번호, 내용을 입력하고 버튼을 누르면 localStorage에 해당 댓글이 저장됨
+![로컬스토리지 이미지]()
+![리뷰 작성 후 결과 이미지]()
+
+```javascript
+
+```
 
 
 <br>
 
 ## 6. 페이지 사진 첨부
-![alt text](./imgs/readme/image.png)
+![사이트 메인 페이지]()
+![제목 검색 결과]()
+![카테고리 검색 결과]()
+![사이트 상세페이지]()
+![리뷰 작성 결과]()
 
 
 <br>
