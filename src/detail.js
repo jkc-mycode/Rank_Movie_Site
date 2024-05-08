@@ -62,6 +62,14 @@ let newvideo = function novideo() {
     }
 };
 
+// let newvideo = function novideo(id) {
+//     while (getvideo(id).length === 0) {
+//         return "관련 영상이 없습니다";
+//         break;
+//     }
+//     return getvideo(id)[0].key;
+// };
+
 // 영화디테일 api
 async function getdetail(id) {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=ko-KR`, options);

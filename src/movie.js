@@ -95,11 +95,10 @@ document.getElementById("searchbtn").addEventListener("click", function (event) 
 });
 
 document.getElementById("searchInput").addEventListener("keypress", function (event) {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
         event.preventDefault();
         executeSearch();
     }
 });
 
 //이동효 종료 부분
-
