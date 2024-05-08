@@ -13,46 +13,57 @@
     <style>
         @import "./style/reset.css";
         @import "./style/movie.css";
+        
     </style>
+
 </head>
 
 <body>
-    <!-- 조민수시작퐁인트 -->
-    <div class="totalhead">
-        <div class="topcontent">
-            <header>
-                <h1>영화 검색사이트</h1>
-            </header>
-        </div>
-        <!-- 탑컨텐츠 끝나는 디브-->
+    <div class="flex-container">
+        <!-- 조민수시작퐁인트 -->
+        <div class="totalhead">
+            <div class="topcontent">
+                <header>
+                    <h1>영화 검색사이트</h1>
+                </header>
+            </div>
+            <!-- 탑컨텐츠 끝나는 디브-->
 
-        <!-- 신이지니 시작 -->
-        <div class="category_box">
-            <div class="dropdown">
-                <button id="dropdown_btn" class="btn btn-secondary dropdown-toggle" type="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    전체 카테고리
-                </button>
-                <ul id="dropdown_box" class="dropdown-menu">
-                    <!-- 장르 목록 들어갈 부분 -->
-                </ul>
+            <!-- 신이지니 시작 -->
+            <div class="category_box">
+                <div class="dropdown">
+                    <button id="dropdown_btn" class="btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        전체 카테고리
+                    </button>
+                    <ul id="dropdown_box" class="dropdown-menu">
+                        <!-- 장르 목록 들어갈 부분 -->
+                    </ul>
+                </div>
+            </div>
+            <!-- 신이지니 끝 -->
+
+            <!-- 검색창 시작 디브 -->
+            <div class="searchbar">
+                <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="영화이름을 검색하세요" aria-label="Search"
+                                id="searchInput">
+                            <button class="btn btn-outline-success" id="searchbtn" type="submit">검색</button>
+                        </form>
+                    </div>
+                </nav>
             </div>
         </div>
-        <!-- 신이지니 끝 -->
-
-        <!-- 검색창 시작 디브 -->
-        <div class="searchbar">
-            <nav class="navbar navbar-light bg-light">
-                <div class="container-fluid">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="영화이름을 검색하세요" aria-label="Search"
-                            id="searchInput">
-                        <button class="btn btn-outline-success" id="searchbtn" type="submit">검색</button>
-                    </form>
-                </div>
-            </nav>
-        </div>
     </div>
+
+
+
+
+
+
+
     <!-- 검색창 끝나는 디브 -->
 
     <!-- update : 2024 - 05 - 07
