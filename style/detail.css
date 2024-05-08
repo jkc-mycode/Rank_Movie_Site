@@ -1,4 +1,12 @@
 /* 조민수 시작포인트*/
+
+@font-face {
+    font-family: "KCC-Hanbit";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     overflow: hidden;
 }
@@ -21,6 +29,7 @@ body {
 }
 
 #right_section {
+    font-family: "KCC-Hanbit";
     margin-top: 8%;
     overflow-y: scroll;
     height: 70vh;
@@ -32,10 +41,14 @@ body {
     margin-bottom: 40px;
 }
 
+#left_section {
+    margin-top: 8%;
+}
+
 #posterimg {
-    margin-top: 150px;
     border-radius: 20px;
     height: 600px;
+    background-position-y: center;
 }
 
 .loader {
@@ -62,7 +75,6 @@ body {
 }
 
 /* 조민수 끝나는포인트*/
-
 
 /* 리뷰 css */
 .reviews {
