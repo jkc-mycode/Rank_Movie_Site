@@ -45,7 +45,33 @@ const cardWidth = 285;
 const cardMargin = 15;
 let currentIdx = 0;
 
+
 export async function makeCard(item) {
+    console.log("@@@@@@@@@@@@");
+    const innerContents = `
+    <div>
+        <a href = "./detail.html?${item.id}">
+        <div class="card" style="width: 18rem;" id= "mvcard_${item.id}">
+        <img src="https://image.tmdb.org/t/p/w500${item.poster_path}" class="card-img-top" alt="이미지 준비중">
+            <div class="card-body">
+                <h3 class="card-title">${item.title}</h3>
+                <p class="card-text">${item.overview}</p>
+            </div>
+            <div>
+            <small class = "score"> "rating:${item.vote_average}</small>
+            </div>
+        </div>
+        </a>
+    </div>
+    `;
+    document.querySelector("#movieCard").insertAdjacentHTML("beforeend", innerContents);
+    document.getElementById(`mvcard_${item.id}`).addEventListener("click", async (e) => {
+        await makeModal(item);
+    });
+}
+
+
+export async function makeSlideCard(item) {
     const innerContents = `
             <li class="card" id= "mvcard_${item.id}">
                 <a href = "./detail.html?${item.id}">
@@ -57,13 +83,13 @@ export async function makeCard(item) {
     $movieCards.insertAdjacentHTML("beforeend", innerContents);
 }
 
-//출력하기
+// 출력하기
 export async function print() {
     const data = await getdata();
     let count = 0;
     Promise.all(
         data.map(async function (item) {
-            await makeCard(item);
+            await makeSlideCard(item);
             count++;
         })
     ).then((res) => {
@@ -83,7 +109,16 @@ export async function print() {
 
 // 이동효 시작 부분
 
-function executeSearch() {
+async function executeSearch() {
+    document.getElementById("movieCard").innerHTML = " ";
+    document.getElementById("movie_slide").innerHTML = " ";
+    document.getElementById("movieCard_wrapper").innerHTML = " ";
+    
+    const data = await getdata();
+    data.forEach(async function (item) {
+        await makeCard(item);
+    });
+
     const searchText = document.getElementById("searchInput").value.toLowerCase();
     const cards = document.querySelectorAll(".card");
 
