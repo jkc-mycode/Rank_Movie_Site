@@ -1,25 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sunflower:wght@300&display=swap");
 
+
+/* 기본 CSS */
 html {
     overflow-x: hidden;
 }
 
-.totalhead {
-    font-family: "Sunflower", sans-serif;
-    background-color: white;
+body {
+    background-color: #222529;
 }
 
-/* 탑컨텐츠  */
-.topcontent {
-    height: 200px;
-    color: rgb(63, 46, 160);
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
+/* 헤더 (로고, 카테고리, 검색) */
 /* 검색창 라인 */
 .searchbar {
     display: block;
@@ -28,23 +20,24 @@ html {
     justify-content: center;
 
     padding: 10px 20px 20px 20px;
-
-    /* border-top: 1px solid rgb(245, 240, 243); */
-}
-
-.navbar-brand {
-    flex: 3;
 }
 
 .container-fluid {
     margin-bottom: 10px;
 }
 
+/* 로고 a 태그 */
+.navbar-brand {
+    flex: 3;
+}
+
+/* 카테고리 기능 */
 .category_box {
     flex: 0.5;
     margin-right: 2%;
 }
 
+/* 검색 기능 */
 .d-flex {
     flex: 1.5;
 }
@@ -55,6 +48,112 @@ html {
 
 #searchBtn {
     width: 80px;
+}
+
+
+
+/* 메인 슬라이드 */
+.movie_slide {
+    width: auto;
+    height: auto;
+    padding: 3% 5% 3% 5%;
+    /* border-bottom: 1px solid white; */
+    background-color: #222529;
+
+    margin-top: 0px;
+    margin-left: 220px;
+    margin-right: 220px;
+}
+
+.slide {
+    border: 20px solid white;
+    border-radius: 20px;
+    width: auto;
+    max-width: 1080px;
+    margin: 0 auto 0 auto;
+    background-color: black;
+}
+
+.carousel-item>img {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    text-shadow: 0px 0px 10px black;
+    font-size: 2em;
+}
+
+
+
+/* 카드 슬라이드 */
+.card {
+    width: 285px;
+    height: 450px;
+
+    padding: 20px 5px 20px 5px;
+    border-radius: 10px;
+}
+
+.movieCard_wrapper {
+    position: relative;
+    width: 100vw;
+    height: 450px;
+    margin: 0 auto 50px auto;
+    padding: 0 auto 0 auto;
+    overflow: hidden;
+}
+
+.movieCards {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.movieCards.animated {
+    transition: left 0.5s ease-out;
+}
+
+.movieCards>li:not(:last-child) {
+    float: left;
+    margin-right: 15px;
+}
+
+.controls {
+    text-align: center;
+}
+
+.controls>span.prev {
+    right: calc(97%);
+}
+
+.controls>span.next {
+    left: calc(97%);
+}
+
+.controls>span {
+    position: absolute;
+    padding: 10px 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+
+/* 검색 결과 카드 */
+#movieCard {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+
+    background-color: #222529;
 }
 
 .search_result_link {
@@ -85,111 +184,4 @@ html {
     font-weight: bold;
     font-size: 15px;
     margin-top: 5%;
-}
-
-/* update : 2024 - 05 - 07
-   작성자 : 윤동협         */
-/* 영화 슬라이드 박스 (main) */
-.movie_slide {
-    width: auto;
-    height: auto;
-    padding: 3% 5% 3% 5%;
-    /* border-bottom: 1px solid white; */
-    background-color: #222529;
-
-    margin-top: 0px;
-    margin-left: 220px;
-    margin-right: 220px;
-}
-
-.slide {
-    border: 20px solid white;
-    border-radius: 20px;
-    width: auto;
-    max-width: 1080px;
-    margin: 0 auto 0 auto;
-    background-color: black;
-}
-
-.carousel-item > img {
-    width: 100%;
-    height: 100%;
-    max-height: 100vh;
-    object-fit: cover;
-}
-
-.carousel-caption {
-    text-shadow: 0px 0px 10px black;
-    font-size: 2em;
-}
-
-/* ---------- 구분선 -------------- */
-
-/* 카드 */
-
-.card {
-    width: 285px;
-    height: 450px;
-
-    padding: 20px 5px 20px 5px;
-    border-radius: 10px;
-}
-
-.movieCard_wrapper {
-    position: relative;
-    width: 100vw;
-    height: 450px;
-    margin: 0 auto 50px auto;
-    padding: 0 auto 0 auto;
-    overflow: hidden;
-}
-
-.movieCards {
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-.movieCards.animated {
-    transition: left 0.5s ease-out;
-}
-
-.movieCards > li:not(:last-child) {
-    float: left;
-    margin-right: 15px;
-}
-
-.controls {
-    text-align: center;
-}
-
-.controls > span.prev {
-    right: calc(97%);
-}
-
-.controls > span.next {
-    left: calc(97%);
-}
-
-.controls > span {
-    position: absolute;
-    padding: 10px 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: black;
-    opacity: 0.5;
-    cursor: pointer;
-}
-
-#movieCard {
-    display: flex;
-    flex-direction: row;
-    align-self: stretch;
-    justify-content: space-evenly;
-    flex-flow: wrap;
-
-    background-color: #222529;
-}
-
-body {
-    background-color: #222529;
 }

@@ -83,7 +83,7 @@ async function makeSubPage() {
             <p> ${credits[1][0].name}</p>
             <strong> 출연자 배우</strong>
             <p> ${credits[0][0].name}, ${credits[0][1].name}, ${credits[0][2].name},
-            ${credits[0][3].name} </p>
+            ${credits[0][3] ? credits[0][3].name : ""} </p>
             <div class="movie_review" id="movie_review">
                 <p><b>리뷰쓰기</b></p>
                 <div class="row g-3">
@@ -120,6 +120,15 @@ await makeSubPage();
 
 // 상세페이지 로드될 때 댓글들을 불러옴
 loadComments();
+
+
+// 페이지 로딩을 보여주기 위한 딜레이
+setTimeout(function () {
+    const loader = document.querySelector(".loader");
+    if (loader) {
+        loader.style.display = "none";
+    }
+}, 1000);
 
 
 // 댓글 작성 양식 제출 시 addComment 함수 호출
