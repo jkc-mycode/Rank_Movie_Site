@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sunflower:wght@300&display=swap");
 .totalhead {
-  font-family: 'Sunflower', sans-serif;
-  background-color: white;
+    font-family: "Sunflower", sans-serif;
+    background-color: white;
 }
 
 /* 탑컨텐츠  */
@@ -17,51 +17,50 @@
 
 /* 검색창 라인 */
 .searchbar {
-  display: block;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+    display: block;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
 
     padding: 20px;
 
-  /* border-top: 1px solid rgb(245, 240, 243); */
+    /* border-top: 1px solid rgb(245, 240, 243); */
 }
 
 .navbar-brand {
-  flex: 3;
+    flex: 3;
 }
 
 .category_box {
-  flex: 0.5;
+    flex: 0.5;
 }
 
 .d-flex {
-  flex: 1.5;
+    flex: 1.5;
 }
-
 
 /* update : 2024 - 05 - 07
    작성자 : 윤동협         */
 /* 영화 슬라이드 박스 (main) */
 .movie_slide {
-  width: auto;
-  height: auto;
-  padding: 3% 5% 3% 5%;
-  /* border-bottom: 1px solid white; */
-  background-color: #222529;
-  
-  margin-top: 80px;
-  margin-left: 220px;
-  margin-right: 220px;
+    width: auto;
+    height: auto;
+    padding: 3% 5% 3% 5%;
+    /* border-bottom: 1px solid white; */
+    background-color: #222529;
+
+    margin-top: 80px;
+    margin-left: 220px;
+    margin-right: 220px;
 }
 
 .slide {
-  border: 20px solid white;
-  border-radius: 20px;
-  width: auto;
-  max-width: 1080px;
-  margin: 0 auto 0 auto;
-  background-color: black;
+    border: 20px solid white;
+    border-radius: 20px;
+    width: auto;
+    max-width: 1080px;
+    margin: 0 auto 0 auto;
+    background-color: black;
 }
 
 .carousel-item > img {
@@ -120,18 +119,20 @@
 }
 
 #movieCard {
-  display: flex;
-  flex-direction: row;
-  align-self: stretch;
-  justify-content: space-evenly;
-  flex-flow: wrap;
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    justify-content: space-evenly;
+    flex-flow: wrap;
 
-  background-color: #222529;
-  margin-top: 80px;
+    background-color: #222529;
+    margin-top: 80px;
 }
 
 body {
-  background-color: #222529;
+    background-color: #222529;
+}
+
 .controls > span.prev {
     right: calc(97%);
 }
