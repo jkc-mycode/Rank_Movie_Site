@@ -46,9 +46,9 @@ export const makeMovieSlide = async function () {
         if (i > NUM_OF_SLIDE - 1) break;
     }
 
-    // for (let i = 0; i < NUM_OF_SLIDE; i++) {
-    //     addMovieSilde(data[i], i);
-    // }
+    for (let i = 0; i < NUM_OF_SLIDE; i++) {
+        addMovieSilde(data[i], i);
+    }
 };
 
 // 슬라이드에 항목 추가
