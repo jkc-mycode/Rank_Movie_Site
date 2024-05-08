@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sunflower:wght@300&display=swap");
 
+html {
+    overflow-x: hidden;
+}
+
 .totalhead {
     font-family: "Sunflower", sans-serif;
     background-color: white;
@@ -53,6 +57,37 @@
     width: 80px;
 }
 
+.search_result_link {
+    text-decoration: none;
+    color: black;
+}
+
+.search_cards {
+    background-color: white;
+    width: 18rem;
+    padding: 15px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.search_result {
+    display: block;
+    margin: 1%;
+}
+
+.card_title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 5%;
+}
+
+.score {
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 5%;
+}
+
+
 /* update : 2024 - 05 - 07
    작성자 : 윤동협         */
 /* 영화 슬라이드 박스 (main) */
@@ -103,7 +138,7 @@
 
 .movieCard_wrapper {
     position: relative;
-    width: 2085px;
+    width: 100vw;
     height: 450px;
     margin: 0 auto 50px auto;
     padding: 0 auto 0 auto;

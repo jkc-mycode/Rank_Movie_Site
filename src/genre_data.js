@@ -91,7 +91,9 @@ const loadGenreData = (movieDataList, genreId, genreName) => {
         }
     });
 
-    document.getElementById('movieCard').innerHTML = ' ';
+    document.getElementById("movieCard").innerHTML = " ";
+    document.getElementById("movie_slide").innerHTML = " ";
+    document.getElementById("movieCard_wrapper").innerHTML = " ";
 
     searchedMovies.forEach(async item => {
         await makeCard(item);
