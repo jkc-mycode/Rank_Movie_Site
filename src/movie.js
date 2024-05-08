@@ -101,5 +101,9 @@ document.getElementById("searchInput").addEventListener("keypress", function (ev
     }
 });
 
+document.getElementById("navbar-brand").addEventListener("click", function (event) {
+    location.reload();
+});
+
 //이동효 종료 부분
 
