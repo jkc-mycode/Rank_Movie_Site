@@ -41,10 +41,17 @@ export const makeMovieSlide = async function () {
     const data = await getImgdata();
     const NUM_OF_SLIDE = 10;
 
-    for (let i = 0; i < NUM_OF_SLIDE; i++) {
-        addMovieSilde(data[i], i);
+    let i = 0; 
+    while (true) { 
+        addMovieSilde(data[i], i++); 
+        if (i > NUM_OF_SLIDE - 1) break; 
     }
 };
+
+//   for (let i = 0; i < NUM_OF_SLIDE; i++) {
+//     addMovieSilde(data[i], i);
+//   }
+// };
 
 // 슬라이드에 항목 추가
 const addMovieSilde = (data, index) => {
