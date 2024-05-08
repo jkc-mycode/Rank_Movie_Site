@@ -103,7 +103,8 @@
 
 .movieCard_wrapper {
     position: relative;
-    width: 2085px;
+    /* width: 2085px; */
+    width: 100%;
     height: 450px;
     margin: 0 auto 50px auto;
     padding: 0 auto 0 auto;
@@ -127,11 +128,11 @@
 }
 
 .controls > span.prev {
-    right: calc(95%);
+    right: calc(97%);
 }
 
 .controls > span.next {
-    left: calc(95%);
+    left: calc(97%);
 }
 
 .controls > span {
