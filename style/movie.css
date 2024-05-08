@@ -87,7 +87,6 @@ html {
     margin-top: 5%;
 }
 
-
 /* update : 2024 - 05 - 07
    작성자 : 윤동협         */
 /* 영화 슬라이드 박스 (main) */
@@ -112,7 +111,7 @@ html {
     background-color: black;
 }
 
-.carousel-item>img {
+.carousel-item > img {
     width: 100%;
     height: 100%;
     max-height: 100vh;
@@ -149,10 +148,12 @@ html {
     position: absolute;
     left: 0;
     top: 0;
+}
+.movieCards.animated {
     transition: left 0.5s ease-out;
 }
 
-.movieCards>li:not(:last-child) {
+.movieCards > li:not(:last-child) {
     float: left;
     margin-right: 15px;
 }
@@ -161,15 +162,15 @@ html {
     text-align: center;
 }
 
-.controls>span.prev {
-    right: calc(95%);
+.controls > span.prev {
+    right: calc(97%);
 }
 
-.controls>span.next {
-    left: calc(95%);
+.controls > span.next {
+    left: calc(97%);
 }
 
-.controls>span {
+.controls > span {
     position: absolute;
     padding: 10px 5px;
     top: 50%;

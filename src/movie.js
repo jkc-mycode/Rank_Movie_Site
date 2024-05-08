@@ -36,12 +36,13 @@ export async function getData() {
 
 //카드 만들기
 const $movieCards = document.querySelector(".movieCards");
+let $movieCardLi = document.querySelectorAll(".movieCards>li");
 const $prevBtn = document.querySelector(".prev");
 const $nextBtn = document.querySelector(".next");
 const cardWidth = 285;
 const cardMargin = 15;
 let currentIdx = 0;
-
+let slideCount = 0;
 
 // 검색 결과 카드 출력하는 함수
 export async function makeCard(item) {
@@ -88,20 +89,69 @@ export async function print() {
     Promise.all(
         data.map(async function (item) {
             await makeSlideCard(item);
-            count++;
+            slideCount++;
         })
-    ).then(() => {
-        $movieCards.style.width = (cardWidth + cardMargin) * count - cardMargin + "px";
+    ).then((res) => {
+        $movieCardLi = document.querySelectorAll(".movieCards>li");
+        makeClone();
     });
 
-    // Next, Prev 버튼으로 최대 보여지는 카드 수 결정
-    // css의 left를 직접 계산해서 카드 슬라이드를 보여줌
+    // Next, Prev 버튼으로 카드 슬라이드 동작하는 이벤트 추가 (무한루프)
     $nextBtn.addEventListener("click", function () {
-        if (currentIdx < count - 3) $movieCards.style.left = ++currentIdx * (cardWidth + cardMargin) * -1 + "px";
+        moveCardSlide(currentIdx + 1);
+        console.log($movieCardLi);
     });
     $prevBtn.addEventListener("click", function () {
-        if (currentIdx > 0) $movieCards.style.left = --currentIdx * (cardWidth + cardMargin) * -1 + "px";
+        moveCardSlide(currentIdx - 1);
     });
+}
+
+
+function makeClone() {
+    for (let i = 0; i < slideCount; i++) {
+        const cloneCard = $movieCardLi[i].cloneNode(true);
+        cloneCard.classList.add("clone");
+        $movieCards.appendChild(cloneCard);
+    }
+    for (let i = slideCount - 1; i >= 0; i--) {
+        const cloneCard = $movieCardLi[i].cloneNode(true);
+        cloneCard.classList.add("clone");
+        $movieCards.prepend(cloneCard);
+    }
+    updateWidth();
+    setInitialPos();
+    setTimeout(function () {
+        $movieCards.classList.add("animated");
+    }, 100);
+}
+
+function updateWidth() {
+    const currentCardLi = document.querySelectorAll(".movieCards>li");
+    const newSlideCount = currentCardLi.length;
+
+    const newWidth = (cardWidth + cardMargin) * newSlideCount - cardMargin + "px";
+    $movieCards.style.width = newWidth;
+}
+
+function setInitialPos() {
+    const initialTranslateValue = -(cardWidth + cardMargin) * slideCount;
+    $movieCards.style.transform = `translateX(${initialTranslateValue}px)`;
+}
+
+function moveCardSlide(num) {
+    $movieCards.style.left = -num * (cardWidth + cardMargin) + "px";
+    currentIdx = num;
+
+    if (Math.abs(currentIdx) === slideCount) {
+        setTimeout(function () {
+            $movieCards.classList.remove("animated");
+            $movieCards.style.left = "0px";
+            currentIdx = 0;
+        }, 500);
+        setTimeout(function () {
+            $movieCards.classList.add("animated");
+        }, 600);
+    }
 }
 
 
