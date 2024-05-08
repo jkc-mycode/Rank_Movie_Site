@@ -91,7 +91,9 @@ const loadGenreData = (movieDataList, genreId, genreName) => {
         }
     });
 
-    document.getElementById('movieCard').innerHTML = ' ';
+    document.getElementById("movieCard").innerHTML = " ";
+    document.getElementById("movie_slide").innerHTML = " ";
+    document.getElementById("movieCard_wrapper").innerHTML = " ";
 
     searchedMovies.forEach(async item => {
         await makeCard(item);
@@ -107,6 +109,7 @@ export const makeGenreForm = (movieDataList) => {
     genre.forEach(item => {
         genreTmp += `<li><a id="genre_${item.id}" class="dropdown-item">${item.name}</a></li>`
     });
+    document.querySelector("#dropdown_box").innerHTML = ' ';
     document.querySelector("#dropdown_box").insertAdjacentHTML('beforeend', genreTmp);
 
     genre.forEach(item => {

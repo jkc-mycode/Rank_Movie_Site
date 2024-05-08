@@ -35,47 +35,89 @@ export async function getdata() {
     return newmovieinfo;
 }
 
+// update : 2024 - 05 - 07
+// 작성자 : 윤동협
 //카드 만들기
+const $movieCards = document.querySelector(".movieCards");
+const $prevBtn = document.querySelector(".prev");
+const $nextBtn = document.querySelector(".next");
+const cardWidth = 285;
+const cardMargin = 15;
+let currentIdx = 0;
+
+
 export async function makeCard(item) {
-    console.log(item);
+    console.log("@@@@@@@@@@@@");
     const innerContents = `
-    <div>
-        <a href = "./detail.html?${item.id}">
-        <div class="card" style="width: 18rem;" id= "mvcard_${item.id}">
-        <img src="https://image.tmdb.org/t/p/w500${item.poster_path}" class="card-img-top" alt="이미지 준비중">
-            <div class="card-body">
-                <h3 class="card-title">${item.title}</h3>
-                <p class="card-text">${item.overview}</p>
+    <div class="search_result">
+        <a class="search_result_link" href = "./detail.html?${item.id}">
+            <div class="search_cards" style="width: 18rem;" id= "mvcard_${item.id}">
+                <img src="https://image.tmdb.org/t/p/w500${item.poster_path}" class="card-img-top" alt="이미지 준비중">
+                <div class="card-body">
+                    <p class="card_title">${item.title}</p>
+                </div>
+                <div>
+                    <p class = "score"> rating : ${item.vote_average}</p>
+                </div>
             </div>
-            <div>
-            <small class = "score"> "rating:${item.vote_average}</small>
-            </div>
-        </div>
         </a>
     </div>
     `;
     document.querySelector("#movieCard").insertAdjacentHTML("beforeend", innerContents);
-
     document.getElementById(`mvcard_${item.id}`).addEventListener("click", async (e) => {
         await makeModal(item);
     });
 }
 
-//출력하기
+
+export async function makeSlideCard(item) {
+    const innerContents = `
+            <li class="card" id= "mvcard_${item.id}">
+                <a href = "./detail.html?${item.id}">
+                    <img src="https://image.tmdb.org/t/p/w500${item.poster_path}" class="card-img-top" alt="이미지 준비중">
+                </a>
+            </li>
+        `;
+
+    $movieCards.insertAdjacentHTML("beforeend", innerContents);
+}
+
+// 출력하기
 export async function print() {
     const data = await getdata();
     let count = 0;
-    data.forEach(async function (item) {
-        await makeCard(item);
-        count++;
+    Promise.all(
+        data.map(async function (item) {
+            await makeSlideCard(item);
+            count++;
+        })
+    ).then((res) => {
+        $movieCards.style.width = (cardWidth + cardMargin) * count - cardMargin + "px";
+    });
+
+    $nextBtn.addEventListener("click", function () {
+        if (currentIdx < count - 7) $movieCards.style.left = ++currentIdx * (cardWidth + cardMargin) * -1 + "px";
+    });
+    $prevBtn.addEventListener("click", function () {
+        if (currentIdx > 0) $movieCards.style.left = --currentIdx * (cardWidth + cardMargin) * -1 + "px";
     });
 }
+// ----------------- 구분선 ------------------------
 
 // 조민수 끝나는포인트
 
 // 이동효 시작 부분
 
-function executeSearch() {
+async function executeSearch() {
+    document.getElementById("movieCard").innerHTML = " ";
+    document.getElementById("movie_slide").innerHTML = " ";
+    document.getElementById("movieCard_wrapper").innerHTML = " ";
+
+    const data = await getdata();
+    data.forEach(async function (item) {
+        await makeCard(item);
+    });
+
     const searchText = document.getElementById("searchInput").value.toLowerCase();
     const cards = document.querySelectorAll(".card");
 
@@ -95,11 +137,14 @@ document.getElementById("searchbtn").addEventListener("click", function (event) 
 });
 
 document.getElementById("searchInput").addEventListener("keypress", function (event) {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
         event.preventDefault();
         executeSearch();
     }
 });
 
-//이동효 종료 부분
+document.getElementById("navbar-brand").addEventListener("click", function (event) {
+    location.reload();
+});
 
+//이동효 종료 부분
