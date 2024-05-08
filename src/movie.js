@@ -47,7 +47,6 @@ let currentIdx = 0;
 
 
 export async function makeCard(item) {
-    console.log("@@@@@@@@@@@@");
     const innerContents = `
     <div class="search_result">
         <a class="search_result_link" href = "./detail.html?${item.id}">
@@ -119,10 +118,10 @@ async function executeSearch() {
     });
 
     const searchText = document.getElementById("searchInput").value.toLowerCase();
-    const cards = document.querySelectorAll(".card");
+    const cards = document.querySelectorAll(".search_cards");
 
     cards.forEach(function (card) {
-        const title = card.querySelector(".card-title").textContent.toLowerCase();
+        const title = card.querySelector(".card_title").textContent.toLowerCase();
         if (title.includes(searchText)) {
             card.style.display = "block";
         } else {
