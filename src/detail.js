@@ -11,7 +11,6 @@ const options = {
     }
 };
 
-
 //  영화 감독 출연진 정보에 대한 api가져오기
 async function getcredit(id) {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=ko-KR`, options);
@@ -111,7 +110,7 @@ async function makesubpage() {
             </div><br>
             <input type="hidden" id="movieId" value="영화 아이디를 여기에 입력하세요">
             <div class="review_btn_box">
-                <button id="review_btn" class="btn btn-primary review_btn" type="button">Submit</button>
+                <button id="review_btn" class="btn btn-outline-secondary review_btn" type="button">리뷰작성</button>
             </div>
             <div id="commentContainer">
 
@@ -129,7 +128,7 @@ await makesubpage();
 loadComments();
 
 // 댓글 작성 양식 제출 시 addComment 함수 호출
-document.getElementById('review_btn').addEventListener('click', function(event) {
+document.getElementById("review_btn").addEventListener("click", function (event) {
     event.preventDefault();
     addComment();
     // 댓글 작성 후 다시 댓글을 불러옴
