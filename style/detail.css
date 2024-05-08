@@ -41,10 +41,14 @@ body {
     margin-bottom: 40px;
 }
 
+#left_section {
+    margin-top: 8%;
+}
+
 #posterimg {
-    margin-top: 150px;
     border-radius: 20px;
     height: 600px;
+    background-position-y: center;
 }
 
 .loader {
