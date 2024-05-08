@@ -129,7 +129,7 @@ await makesubpage();
 loadComments();
 
 // 댓글 작성 양식 제출 시 addComment 함수 호출
-document.getElementById('review_btn').addEventListener('click', function(event) {
+document.getElementById('review_btn').addEventListener('click', function (event) {
     event.preventDefault();
     addComment();
     // 댓글 작성 후 다시 댓글을 불러옴

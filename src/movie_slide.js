@@ -40,6 +40,7 @@ const matchImageById = async function (id) {
 export const makeMovieSlide = async function () {
     const data = await getImgdata();
     const NUM_OF_SLIDE = 10;
+
     let i = 0;
     while (true) {
         addMovieSilde(data[i], i++);

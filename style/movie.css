@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sunflower:wght@300&display=swap");
+
 .totalhead {
     font-family: "Sunflower", sans-serif;
     background-color: white;
@@ -22,7 +23,7 @@
     align-items: flex-start;
     justify-content: center;
 
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
 
     /* border-top: 1px solid rgb(245, 240, 243); */
 }
@@ -31,12 +32,25 @@
     flex: 3;
 }
 
+.container-fluid {
+    margin-bottom: 10px;
+}
+
 .category_box {
     flex: 0.5;
+    margin-right: 2%;
 }
 
 .d-flex {
     flex: 1.5;
+}
+
+#searchInput {
+    height: 40px;
+}
+
+#searchbtn {
+    width: 80px;
 }
 
 /* update : 2024 - 05 - 07
@@ -49,7 +63,7 @@
     /* border-bottom: 1px solid white; */
     background-color: #222529;
 
-    margin-top: 80px;
+    margin-top: 0px;
     margin-left: 220px;
     margin-right: 220px;
 }
@@ -74,6 +88,8 @@
     text-shadow: 0px 0px 10px black;
     font-size: 2em;
 }
+
+/* ---------- 구분선 -------------- */
 
 /* 카드 */
 
@@ -100,6 +116,7 @@
     top: 0;
     transition: left 0.5s ease-out;
 }
+
 .movieCards > li:not(:last-child) {
     float: left;
     margin-right: 15px;
@@ -108,6 +125,15 @@
 .controls {
     text-align: center;
 }
+
+.controls > span.prev {
+    right: calc(95%);
+}
+
+.controls > span.next {
+    left: calc(95%);
+}
+
 .controls > span {
     position: absolute;
     padding: 10px 5px;
@@ -126,17 +152,8 @@
     flex-flow: wrap;
 
     background-color: #222529;
-    margin-top: 80px;
 }
 
 body {
     background-color: #222529;
 }
-
-.controls > span.prev {
-    right: calc(97%);
-}
-.controls > span.next {
-    left: calc(97%);
-}
-/* ---------- 구분선 -------------- */
