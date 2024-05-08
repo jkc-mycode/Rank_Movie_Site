@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sunflower:wght@300&display=swap");
+
 .totalhead {
     font-family: "Sunflower", sans-serif;
+    background-color: white;
 }
 
 /* 탑컨텐츠  */
@@ -16,24 +18,39 @@
 
 /* 검색창 라인 */
 .searchbar {
-    display: flex;
+    display: block;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
 
-    border-top: 1px solid rgb(245, 240, 243);
+    /* border-top: 1px solid rgb(245, 240, 243); */
 }
 
-.totalhead {
-    background-image: url("data:image/jpeg;base64,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");
-    background-position: center;
-    background-size: cover;
+.navbar-brand {
+    flex: 3;
 }
 
-body {
-    background-color: #f0e6f0;
+.container-fluid {
+    margin-bottom: 10px;
+}
+
+.category_box {
+    flex: 0.5;
+    margin-right: 2%;
+}
+
+.d-flex {
+    flex: 1.5;
+}
+
+#searchInput {
+    height: 40px;
+}
+
+#searchbtn {
+    width: 80px;
 }
 
 /* update : 2024 - 05 - 07
@@ -43,18 +60,24 @@ body {
     width: auto;
     height: auto;
     padding: 3% 5% 3% 5%;
-    border-bottom: 1px solid white;
+    /* border-bottom: 1px solid white; */
+    background-color: #222529;
+
+    margin-top: 0px;
+    margin-left: 220px;
+    margin-right: 220px;
 }
 
 .slide {
-    border: 10px solid white;
+    border: 20px solid white;
+    border-radius: 20px;
     width: auto;
     max-width: 1080px;
     margin: 0 auto 0 auto;
     background-color: black;
 }
 
-.carousel-item > img {
+.carousel-item>img {
     width: 100%;
     height: 100%;
     max-height: 100vh;
@@ -65,6 +88,7 @@ body {
     text-shadow: 0px 0px 10px black;
     font-size: 2em;
 }
+
 /* ---------- 구분선 -------------- */
 
 /* 카드 */
@@ -92,7 +116,8 @@ body {
     top: 0;
     transition: left 0.5s ease-out;
 }
-.movieCards > li:not(:last-child) {
+
+.movieCards>li:not(:last-child) {
     float: left;
     margin-right: 15px;
 }
@@ -100,7 +125,16 @@ body {
 .controls {
     text-align: center;
 }
-.controls > span {
+
+.controls>span.prev {
+    right: calc(95%);
+}
+
+.controls>span.next {
+    left: calc(95%);
+}
+
+.controls>span {
     position: absolute;
     padding: 10px 5px;
     top: 50%;
@@ -109,9 +143,17 @@ body {
     opacity: 0.5;
     cursor: pointer;
 }
-.controls > span.prev {
-    right: calc(95%);
+
+#movieCard {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+
+    background-color: #222529;
 }
-.controls > span.next {
-    left: calc(95%);
+
+body {
+    background-color: #222529;
 }

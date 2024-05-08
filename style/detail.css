@@ -55,6 +55,7 @@ body {
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
     }
+
     100% {
         transform: translate(-50%, -50%) rotate(360deg);
     }
@@ -71,21 +72,26 @@ body {
     margin-top: 3%;
     align-items: center;
 }
+
 .commenter_info {
     display: block;
     width: 90%;
 }
+
 .img_and_commenter_and_time {
     display: flex;
     align-items: center;
 }
+
 .comment_img {
     height: 10%;
     width: 10%;
 }
+
 .comment_content {
     margin-left: 2%;
 }
+
 .review_content {
     font-weight: bold;
     word-wrap: break-word;

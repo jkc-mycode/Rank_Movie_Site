@@ -6,7 +6,7 @@ export function loadComments() {
     let commentContainer = document.getElementById('commentContainer');
     commentContainer.innerHTML = ''; // 기존 댓글을 지우고 새로 불러옴
 
-    comments.forEach(function(item) {
+    comments.forEach(function (item) {
         let deleteBtnId = crypto.randomUUID();
         let review_tmp = `
         <div class=reviews>
@@ -30,10 +30,10 @@ export function loadComments() {
         commentContainer.insertAdjacentHTML('beforeend', review_tmp);
 
         let deleteBtn = document.getElementById(`${deleteBtnId}`);
-        deleteBtn.addEventListener('click', function() {
+        deleteBtn.addEventListener('click', function () {
             let inputPassword = prompt('비밀번호를 입력하세요:');
             if (inputPassword === item.password) {
-                let index = comments.findIndex(function(comment) {
+                let index = comments.findIndex(function (comment) {
                     return comment.id === item.id;
                 });
                 comments.splice(index, 1);

@@ -113,7 +113,7 @@ async function executeSearch() {
     document.getElementById("movieCard").innerHTML = " ";
     document.getElementById("movie_slide").innerHTML = " ";
     document.getElementById("movieCard_wrapper").innerHTML = " ";
-    
+
     const data = await getdata();
     data.forEach(async function (item) {
         await makeCard(item);
@@ -142,6 +142,10 @@ document.getElementById("searchInput").addEventListener("keypress", function (ev
         event.preventDefault();
         executeSearch();
     }
+});
+
+document.getElementById("navbar-brand").addEventListener("click", function (event) {
+    location.reload();
 });
 
 //이동효 종료 부분
