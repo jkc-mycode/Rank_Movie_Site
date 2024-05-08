@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sunflower:wght@300&display=swap");
+
 .totalhead {
-  font-family: 'Sunflower', sans-serif;
-  background-color: white;
+    font-family: "Sunflower", sans-serif;
+    background-color: white;
 }
 
 /* 탑컨텐츠  */
@@ -17,54 +18,66 @@
 
 /* 검색창 라인 */
 .searchbar {
-  display: block;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+    display: block;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
 
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
 
-  /* border-top: 1px solid rgb(245, 240, 243); */
+    /* border-top: 1px solid rgb(245, 240, 243); */
 }
 
 .navbar-brand {
-  flex: 3;
+    flex: 3;
+}
+
+.container-fluid {
+    margin-bottom: 10px;
 }
 
 .category_box {
-  flex: 0.5;
+    flex: 0.5;
+    margin-right: 2%;
 }
 
 .d-flex {
-  flex: 1.5;
+    flex: 1.5;
 }
 
+#searchInput {
+    height: 40px;
+}
+
+#searchbtn {
+    width: 80px;
+}
 
 /* update : 2024 - 05 - 07
    작성자 : 윤동협         */
 /* 영화 슬라이드 박스 (main) */
 .movie_slide {
-  width: auto;
-  height: auto;
-  padding: 3% 5% 3% 5%;
-  /* border-bottom: 1px solid white; */
-  background-color: #222529;
-  
-  margin-top: 80px;
-  margin-left: 220px;
-  margin-right: 220px;
+    width: auto;
+    height: auto;
+    padding: 3% 5% 3% 5%;
+    /* border-bottom: 1px solid white; */
+    background-color: #222529;
+
+    margin-top: 0px;
+    margin-left: 220px;
+    margin-right: 220px;
 }
 
 .slide {
-  border: 20px solid white;
-  border-radius: 20px;
-  width: auto;
-  max-width: 1080px;
-  margin: 0 auto 0 auto;
-  background-color: black;
+    border: 20px solid white;
+    border-radius: 20px;
+    width: auto;
+    max-width: 1080px;
+    margin: 0 auto 0 auto;
+    background-color: black;
 }
 
-.carousel-item > img {
+.carousel-item>img {
     width: 100%;
     height: 100%;
     max-height: 100vh;
@@ -75,6 +88,7 @@
     text-shadow: 0px 0px 10px black;
     font-size: 2em;
 }
+
 /* ---------- 구분선 -------------- */
 
 /* 카드 */
@@ -102,7 +116,8 @@
     top: 0;
     transition: left 0.5s ease-out;
 }
-.movieCards > li:not(:last-child) {
+
+.movieCards>li:not(:last-child) {
     float: left;
     margin-right: 15px;
 }
@@ -110,7 +125,16 @@
 .controls {
     text-align: center;
 }
-.controls > span {
+
+.controls>span.prev {
+    right: calc(95%);
+}
+
+.controls>span.next {
+    left: calc(95%);
+}
+
+.controls>span {
     position: absolute;
     padding: 10px 5px;
     top: 50%;
@@ -121,16 +145,15 @@
 }
 
 #movieCard {
-  display: flex;
-  flex-direction: row;
-  align-self: stretch;
-  justify-content: space-evenly;
-  flex-flow: wrap;
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    justify-content: space-evenly;
+    flex-flow: wrap;
 
-  background-color: #222529;
-  margin-top: 80px;
+    background-color: #222529;
 }
 
 body {
-  background-color: #222529;
+    background-color: #222529;
 }
