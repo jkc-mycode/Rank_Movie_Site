@@ -1,7 +1,4 @@
-// update : 2024 - 05 - 07
-// 작성자 : 윤동협
-
-import { getdata } from "./movie.js";
+import { getData } from "./movie.js";
 
 const $carouselIndicator = document.querySelector(".carousel-indicators");
 const $carouselItem = document.querySelector(".carousel-inner");
@@ -16,12 +13,16 @@ const options = {
     }
 };
 
-const getImgdata = async function () {
-    const totaldata = await getdata();
 
-    return await Promise.all(totaldata.map(async (item) => (item.slide_poster_path = await matchImageById(item.id))))
-        .then((data) => {
-            return totaldata;
+// 각 영화의 이미지를 모아서 
+const getImgData = async function () {
+    const totalData = await getData();
+
+    return await Promise.all(totalData.map(async (item) => (
+        item.slide_poster_path = await matchImageById(item.id)
+    )))
+        .then(() => {
+            return totalData;
         })
         .catch((error) => {
             // 오류 처리
@@ -29,6 +30,8 @@ const getImgdata = async function () {
         });
 };
 
+
+// 매개변수로 받은 id로 TMDB API에서 데이터 fetch하는 함수
 const matchImageById = async function (id) {
     const response = await fetch("https://api.themoviedb.org/3/movie/" + id + "/images", options);
     const data = await response.json();
@@ -36,25 +39,22 @@ const matchImageById = async function (id) {
     return data.backdrops[0].file_path;
 };
 
+
 // data에서 상위 10개만큼 슬라이드에 추가
 export const makeMovieSlide = async function () {
-    const data = await getImgdata();
+    const data = await getImgData();
     const NUM_OF_SLIDE = 10;
 
     let i = 0;
     while (true) {
-        addMovieSilde(data[i], i++);
+        addMovieSlide(data[i], i++);
         if (i > NUM_OF_SLIDE - 1) break;
     }
 };
 
-//   for (let i = 0; i < NUM_OF_SLIDE; i++) {
-//     addMovieSilde(data[i], i);
-//   }
-// };
 
 // 슬라이드에 항목 추가
-const addMovieSilde = (data, index) => {
+const addMovieSlide = (data, index) => {
     let carouselIndicator;
     let carouselItem;
 
@@ -83,11 +83,12 @@ const addMovieSilde = (data, index) => {
     }
     $carouselIndicator.insertAdjacentHTML("beforeend", carouselIndicator);
     $carouselItem.insertAdjacentHTML("beforeend", carouselItem);
-    addMovieSildeClickEvent(data.id);
+    addMovieSlideClickEvent(data.id);
 };
 
-// click 이벤트 생성
-const addMovieSildeClickEvent = (id) => {
+
+// 각 슬라이드 카드에 click 이벤트 생성
+const addMovieSlideClickEvent = (id) => {
     document.getElementById(`img_slide_${id}`).addEventListener("click", () => {
         window.location.href = `detail.html?${id}`;
     });

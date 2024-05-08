@@ -1,7 +1,6 @@
-// 신이지니 전부 다 작성
+import { makeCard, getData } from "./movie.js";
 
-import { makeCard } from "./movie.js";
-
+// 장르 데이터 배열
 export const genre = [
     {
         id: 28,
@@ -105,13 +104,27 @@ const loadGenreData = (movieDataList, genreId, genreName) => {
 
 // 장르 html 만드는 함수
 export const makeGenreForm = (movieDataList) => {
-    let genreTmp = ``;
+    let genreTmp = `<li><a id="genre_total" class="dropdown-item">전체</a></li>`;
     genre.forEach(item => {
         genreTmp += `<li><a id="genre_${item.id}" class="dropdown-item">${item.name}</a></li>`
     });
     document.querySelector("#dropdown_box").innerHTML = ' ';
     document.querySelector("#dropdown_box").insertAdjacentHTML('beforeend', genreTmp);
 
+    // 전체 장르 출력 클릭 이벤트
+    document.getElementById("genre_total").addEventListener('click', async () => {
+        document.getElementById("movieCard").innerHTML = " ";
+        document.getElementById("movie_slide").innerHTML = " ";
+        document.getElementById("movieCard_wrapper").innerHTML = " ";
+        document.querySelector("#dropdown_btn").innerText = "전체"
+
+        const data = await getData();
+        Promise.all(data.map(async item => {
+            await makeCard(item);
+        }));
+    });
+
+    // 각 장르 버튼 클릭 이벤트
     genre.forEach(item => {
         document.getElementById(`genre_${item.id}`).addEventListener('click', () => {
             loadGenreData(movieDataList, item.id, item.name);

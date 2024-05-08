@@ -1,7 +1,5 @@
 import { makeGenreForm } from "./genre_data.js";
-// 신이지니 import
 
-// 조민수 시작포인트
 // TMDB 에서  영화 가져온것
 const options = {
     method: "GET",
@@ -12,31 +10,30 @@ const options = {
     }
 };
 
-export async function getdata() {
+
+// 전체 데이터를 반환하는 함수
+export async function getData() {
     const response = await fetch("https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1", options);
     const data = await response.json();
 
-    const newmovieinfo = [];
+    const newMovieInfo = [];
 
     for (let item of data.results) {
-        const movieinfo = {};
-        movieinfo["title"] = item["title"];
-        movieinfo["overview"] = item["overview"];
-        movieinfo["poster_path"] = item["poster_path"];
-        movieinfo["vote_average"] = item["vote_average"];
-        movieinfo["id"] = item["id"];
+        const movieInfo = {};
+        movieInfo["title"] = item["title"];
+        movieInfo["overview"] = item["overview"];
+        movieInfo["poster_path"] = item["poster_path"];
+        movieInfo["vote_average"] = item["vote_average"];
+        movieInfo["id"] = item["id"];
 
-        newmovieinfo.push(movieinfo);
+        newMovieInfo.push(movieInfo);
     }
 
-    //신이지니 시작
     makeGenreForm(data.results);
-
-    return newmovieinfo;
+    return newMovieInfo;
 }
 
-// update : 2024 - 05 - 07
-// 작성자 : 윤동협
+
 //카드 만들기
 const $movieCards = document.querySelector(".movieCards");
 const $prevBtn = document.querySelector(".prev");
@@ -46,6 +43,7 @@ const cardMargin = 15;
 let currentIdx = 0;
 
 
+// 검색 결과 카드 출력하는 함수
 export async function makeCard(item) {
     const innerContents = `
     <div class="search_result">
@@ -69,6 +67,7 @@ export async function makeCard(item) {
 }
 
 
+// 슬라이드 카드 만드는 함수
 export async function makeSlideCard(item) {
     const innerContents = `
             <li class="card" id= "mvcard_${item.id}">
@@ -81,38 +80,38 @@ export async function makeSlideCard(item) {
     $movieCards.insertAdjacentHTML("beforeend", innerContents);
 }
 
-// 출력하기
+
+// 슬라이드 카드 출력하는 함수
 export async function print() {
-    const data = await getdata();
+    const data = await getData();
     let count = 0;
     Promise.all(
         data.map(async function (item) {
             await makeSlideCard(item);
             count++;
         })
-    ).then((res) => {
+    ).then(() => {
         $movieCards.style.width = (cardWidth + cardMargin) * count - cardMargin + "px";
     });
 
+    // Next, Prev 버튼으로 최대 보여지는 카드 수 결정
+    // css의 left를 직접 계산해서 카드 슬라이드를 보여줌
     $nextBtn.addEventListener("click", function () {
-        if (currentIdx < count - 7) $movieCards.style.left = ++currentIdx * (cardWidth + cardMargin) * -1 + "px";
+        if (currentIdx < count - 3) $movieCards.style.left = ++currentIdx * (cardWidth + cardMargin) * -1 + "px";
     });
     $prevBtn.addEventListener("click", function () {
         if (currentIdx > 0) $movieCards.style.left = --currentIdx * (cardWidth + cardMargin) * -1 + "px";
     });
 }
-// ----------------- 구분선 ------------------------
 
-// 조민수 끝나는포인트
 
-// 이동효 시작 부분
-
+// 제목으로 검색하는 함수
 async function executeSearch() {
     document.getElementById("movieCard").innerHTML = " ";
     document.getElementById("movie_slide").innerHTML = " ";
     document.getElementById("movieCard_wrapper").innerHTML = " ";
 
-    const data = await getdata();
+    const data = await getData();
     data.forEach(async function (item) {
         await makeCard(item);
     });
@@ -120,6 +119,7 @@ async function executeSearch() {
     const searchText = document.getElementById("searchInput").value.toLowerCase();
     const cards = document.querySelectorAll(".search_cards");
 
+    // display 옵션을 통해서 보일지 숨길지 결정
     cards.forEach(function (card) {
         const title = card.querySelector(".card_title").textContent.toLowerCase();
         if (title.includes(searchText)) {
@@ -130,11 +130,14 @@ async function executeSearch() {
     });
 }
 
-document.getElementById("searchbtn").addEventListener("click", function (event) {
+
+// 검색 버튼 클릭 시 제목 검색 함수 실행 이벤트 설정
+document.getElementById("searchBtn").addEventListener("click", function (event) {
     event.preventDefault();
     executeSearch();
 });
 
+//  엔터를 누를 시 검색 함수 실행 이벤트 설정
 document.getElementById("searchInput").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
@@ -142,8 +145,7 @@ document.getElementById("searchInput").addEventListener("keypress", function (ev
     }
 });
 
+// 로고 클릭 시 새로고침
 document.getElementById("navbar-brand").addEventListener("click", function (event) {
     location.reload();
 });
-
-//이동효 종료 부분

@@ -1,12 +1,17 @@
+// localStorage에서 댓글 데이터 가져와서 출력하는 함수 
 export function loadComments() {
     let movieId = getMovieIdFromUrl(); // URL에서 영화 아이디 추출
     document.getElementById('movieId').value = movieId; // movieId 입력란에 값 설정
     let commentsKey = 'comments_' + window.location.href; // 페이지 URL을 키로 사용
+
+    // localStorage에서 키값으로 value를 가져옴
     let comments = JSON.parse(localStorage.getItem(commentsKey)) || [];
     let commentContainer = document.getElementById('commentContainer');
     commentContainer.innerHTML = ''; // 기존 댓글을 지우고 새로 불러옴
 
+    // 해당 영화의 댓글들을 가져와서 반복해서 출력
     comments.forEach(function (item) {
+        // 삭제 시 사용할 UUID 고유값
         let deleteBtnId = crypto.randomUUID();
         let review_tmp = `
         <div class=reviews>
@@ -29,7 +34,10 @@ export function loadComments() {
         `
         commentContainer.insertAdjacentHTML('beforeend', review_tmp);
 
+        // UUID로 생성한 고유값을 버튼의 ID로 활용
         let deleteBtn = document.getElementById(`${deleteBtnId}`);
+
+        // 고유 ID를 통해 각 삭제 버튼마다 이벤트 추가
         deleteBtn.addEventListener('click', function () {
             let inputPassword = prompt('비밀번호를 입력하세요:');
             if (inputPassword === item.password) {
@@ -61,9 +69,6 @@ export function addComment() {
     let dateTime = date + ' ' + time;
 
     let commentId = generateUniqueId(); // 댓글 고유 아이디 생성
-
-    let newComment = document.createElement('div');
-    newComment.innerHTML = `<strong>${name}</strong> - ${review}`;
 
     // 댓글을 로컬 스토리지에 저장
     let commentsKey = 'comments_' + window.location.href; // 페이지 URL을 키로 사용
