@@ -35,7 +35,7 @@
 
 - github PR(=Pull Request) 사용한 협업 (O)
 
-- UX를 고려한 validation check (O)
+- UX를 고려한 validation check (△)
 
 - const와 let만을 이용한 변수 선언 (O)
 
