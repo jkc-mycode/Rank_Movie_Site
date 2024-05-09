@@ -6,6 +6,8 @@
 - 개인과제에서 작성한 [내배캠 인기영화 콜렉션]을 발전시키는 팀 프로젝트
 - 팀원들의 프로젝트 N개 중 1개를 대표로 선택, 팀 프로젝트로 발전
 - TMDB(KR) 오픈 API를 이용한 인기 영화 콜렉션
+- GitHub-Page : https://jkc-mycode.github.io/Rank_Movie_Site/
+- 시연 영상 : https://youtu.be/wpvDnRVjSoA
 
 <br>
 
@@ -16,6 +18,43 @@
 - 팀원 : 윤동협 [@ydh1503](https://github.com/ydh1503)
 - 팀원 : 신이지니 [@shinleejini](https://github.com/shinleejini)
 - 팀원 : 서동현 [@lucetaseo](https://github.com/lucetaseo)
+
+<br>
+
+## 필수 구현 사항
+- TMDB 또는 영화진흥위원회 오픈 API 이용 (O)
+
+- 영화정보 상세 페이지 구현 (O)
+
+- 상세 페이지 영화 리뷰 작성 기능 구현 (O)
+
+- github PR(=Pull Request) 사용한 협업 (O)
+
+- UX를 고려한 validation check (O)
+
+- const와 let만을 이용한 변수 선언 (O)
+
+- 화살표 함수 : 하기 예시 중 2개 이상 사용 (O)
+
+- 반복문 : 하기 예시 전부 구현 (O)
+  - [일반 for문](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/movie.js#L116)
+  - [for … of문](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/movie.js#L21)
+  - [일반 while문](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/movie_slide.js#L49)
+  - [break문](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/movie_slide.js#L51)
+
+- 배열(1) : 하기 예시 중 2개 이상 사용 (O)
+  - [push](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/detail.js#L22)
+  - [splice](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/review.js#L47)
+
+- DOM 제어하기 : 하기 api 목록 중, 4개 이상 사용하기 (O)
+  - [document.getElementById(id)](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/genre_data.js#L129)
+  - [document.querySelector(selector)](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/detail.js#L113)
+  - [document.querySelectorAll(selector)](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/movie.js#L39)
+  - [element.innerHTML](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/detail.js#L54)
+  - [element.addEventListener(type, listener)](https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/genre_data.js#L129)
+
+- module (O)
+
 
 <br>
 
@@ -272,6 +311,7 @@ async function getDetail(id) {
 }
 ```
 
+
 <br>
 
 ### 5-6. 영화 리뷰 기능
@@ -336,5 +376,57 @@ export function addComment() {
 
 - 그래서 대부분의 기능을 구현해본 팀장(김정찬)에게 따로 기능을 맡기지 않고 팀원들의 기능 구현에 도움을 주도록 함
 
-- 일종의 중간 멘토 역할을 함
+- 가장 기억에 남은 도움은 동협님의 슬라이드 이미지 구현하는 코드임
 
+- forEach문을 통해서 fetch를 반복해서 실행할 때 fetch 부분에 await를 걸어주면 끝이라고 생각했음
+
+- 하지만 생각과는 다르게 forEach문 자체는 비동기적으로 동작했음
+
+- 그래서 동협님과 계속 구글링하고 테스트해본 결과 Promise.all()을 통해서 반복적인 fetch를 비동기적으로 동시에 실행시켜서 해결했음
+
+- 특히 Promise.all() 차체에도 await를 걸어서 Promise.all()은 동기적으로, 그 안의 fetch문들은 비동기적으로 실행시키는 게 핵심이었음
+
+- 아직은 잘 설명하는 법을 익히지 못했지만 이렇게 팀원들의 질문을 받고 그 문제를 해결하는 과정 자체가 나의 기반을 다지는 과정이라고 생각함
+
+<br>
+
+### 7-2. 개발 능력이 뒤처져서 어려움을 겪음 (신이지니)
+- 프로그래밍 노베이스로 시작을 했는데 갑자기 난이도가 확 올라간 느낌이라 진도를 하나도 따라가지 못해서 힘들었음
+  
+- 다행히 팀장님과 팀원들의 도움을 받아 하나하나 복습하며 내 파트를 구현할 수 있었음
+
+<br>
+
+### 7-3. 비동기 함수들의 실행 순서 문제 (윤동협)
+- 데이터를 불러오기 이전에 데이터 처리 함수가 먼저 실행되는 오류가 발생하여 이를 처리하는데 많은 시간을 들였음
+  
+- 특히, 비동기 함수가 반복문에 들어가는 경우 해당 반복문이 끝난 이후에 데이터 처리 함수를 순차적으로 실행시키고 싶었으나 await를 통한 해결이 쉽지 않아 다른 방법을 모색해야 했음
+  
+- 예를들어 메인 슬라이드의 이미지의 경우, 이미 불러온 데이터 배열의 영화 id를 바탕으로 새 이미지를 fetch하여 기존 데이터 배열에 병합 후 n개를 추출하여 메인 슬라이드에 추가하는 방식으로 제작하였는데, 이 과정에서 새 이미지를 병합하기 전에 메인 슬라이드에 추가하는 함수가 먼저 동작하여 슬라이드에 이미지가 추가되지 않는 오류가 있었음
+
+- 결과적으로 해당 오류는 Promise.all().then() 구문을 통해 해결할 수 있었다. Promise.all([promise1, promise2, ...])는 Promise의 배열을 받아 모든 Promise가 이행되는 것을 대기하는 메서드로써, 이 경우 Promise.all에 각 fetch를 반환하는 반복문을 넣어줌으로써 반복문 수행 이후 데이터 처리 함수가 순차적으로 진행되게끔 만들어줬음
+
+- 이번 기회를 통해 async, await, Promise 등의 비동기 관련한 개념을 조금 더 확립할 수 있어 좋은 경험이 되었음
+
+- 코드 링크 : https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/movie_slide.js#L18
+
+<br>
+
+### 7-4. Fetch를 통한 API 데이터 불러오는 어려움 (조민수)
+- 이번 프로젝트를 통해 처음으로 API 를 Fetch 를 통해 원하는 데이터를 뽑아오는 경험을 하다보니 Fetch 함수를 생성하는부분이 가장 어려운 부분이 라고 생각함
+ 
+- 하지만 한번 배워보고 직접 여러개의 api를 통해 데이터를 뽑아오다보니 익숙해져서 다행이라고 생각함
+
+<br>
+
+### 7-5. Git Branch 사용이 어려움 (서동현)
+- git에서 계속 따로 분리되어서 브랜치 생성에 문제가 있었으며 그것을 행동하는데 어려움을 느낌
+
+- url페이지마다 따로 적용을 해야하는 부분이 있었는데 url을 따로 잡는것에서 계속 잘 진행이 되지않아서 힘들었음
+
+<br>
+
+### 7-6. 검색 기능 구현에 대한 어려움 (이동효)
+- 검색버튼을 이벤트 처리하는 부분에서 어려움을 겪음
+
+- 자바스크립트 강의를 복습하며 코드작성을 함

@@ -62,9 +62,6 @@ export async function makeCard(item) {
     </div>
     `;
     document.querySelector("#movieCard").insertAdjacentHTML("beforeend", innerContents);
-    document.getElementById(`mvcard_${item.id}`).addEventListener("click", async (e) => {
-        await makeModal(item);
-    });
 }
 
 
