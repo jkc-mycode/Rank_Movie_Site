@@ -408,7 +408,7 @@ export function addComment() {
 
 - 이번 기회를 통해 async, await, Promise 등의 비동기 관련한 개념을 조금 더 확립할 수 있어 좋은 경험이 되었음
 
-- 코드 링크 : https://github.com/jkc-mycode/Rank_Movie_Site/blob/20a4f6ba48cee5d14270838480207f1149d6d133/src/movie_slide.js#L18
+- 코드 링크 : https://github.com/jkc-mycode/Rank_Movie_Site/blob/dc77d6c6441c8c7932695cf87e1cdac4ce95abe0/src/movie_slide.js#L18-L31
 
 <br>
 
