@@ -11,6 +11,11 @@
 
 <br>
 
+## 변경 전 후
+![변경 전 후](./img/readme/before_after.png)
+
+<br>
+
 ## 팀원 구성
 - 팀장 : 김정찬 [@jkc-mycode](https://github.com/jkc-mycode)
 - 팀원 : 조민수 [@CMINSOO](https://github.com/CMINSOO)
@@ -55,8 +60,8 @@
 
 - module (O)
 
-
 <br>
+
 
 ## 1. 개발 기간
 - 2024.05.01 ~ 2024.05.09
